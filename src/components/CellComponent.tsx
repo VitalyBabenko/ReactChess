@@ -10,8 +10,8 @@ interface CellProps {
 const CellComponent: FC<CellProps> = ({ cell, click, selected }) => {
   const getCellClassName = useCallback(() => {
     const result = ["cell", cell.color];
-    if (selected) result.push("selected");
     if (cell.available && cell.figure) result.push("target");
+    if (selected) result.push("selected");
     return result.join(" ");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cell.available, cell.figure, selected]);

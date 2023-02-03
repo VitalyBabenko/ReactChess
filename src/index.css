@@ -5,9 +5,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,6 +20,7 @@ code {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   background-color: #f4f7fa;
   justify-content: center;
   align-items: center;
@@ -32,6 +32,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   border: 9px solid #fff;
+  margin: 15px 0;
   border-radius: 4px;
   box-shadow: 0px 2px 16px rgba(200, 206, 223, 0.5);
 }
@@ -58,7 +59,6 @@ code {
   background-color: #e8edf9;
 }
 .selected {
-  background: #8a73fcc4;
   background: #8e77ff9a;
 }
 
@@ -83,9 +83,45 @@ code {
   background-color: #ff61d273;
 }
 
-.lost {
-  height: calc(50vh - 60px);
-  padding: 30px;
-  margin-left: 50px;
-  background-color: lightgray;
+.player {
+  position: relative;
+  width: calc(72px * 8);
+  height: 70px;
+  background-color: white;
+  border-radius: 4px;
+  border: 9px solid #fff;
+  box-shadow: 0px 2px 16px rgba(200, 206, 223, 0.5);
+}
+
+.player .lost {
+  display: flex;
+}
+
+.player p {
+  font-weight: 300;
+  font-size: 22px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin: 7px 7px 7px;
+}
+
+.player img {
+  width: 31px;
+  height: 31px;
+}
+
+.player .timer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  right: 0;
+  color: white;
+  background-color: #b7c0d8;
+  padding: 18px 10px;
+  border-radius: 4px;
+}
+
+.player .active {
+  background-color: #7b61ff88;
 }

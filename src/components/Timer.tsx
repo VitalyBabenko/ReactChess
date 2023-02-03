@@ -1,54 +1,31 @@
-import { FC, useEffect, useRef, useState } from "react";
-import { Colors } from "../models/Colors";
-import { Player } from "../models/Player";
+import { FC, useEffect, useState } from "react";
 
 interface TimerProps {
-  currentPlayer: Player | null;
-  restart: () => void;
+  className: string;
+  isCounting: boolean;
 }
 
-const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
-  const [blackTime, setBlackTime] = useState(300);
-  const [whiteTime, setWhiteTime] = useState(300);
-  const timer = useRef<null | ReturnType<typeof setInterval>>(null);
+const Timer: FC<TimerProps> = ({ className, isCounting }) => {
+  const [timeLeft, setTimeLeft] = useState(900);
+  const getPadTime = (time: number): string => time.toString().padStart(2, "0");
+  const minutes = getPadTime(Math.floor(timeLeft / 60));
+  const seconds = getPadTime(timeLeft - +minutes * 60);
 
   useEffect(() => {
-    startTimer();
-  }, [currentPlayer]);
+    const interval = setInterval(() => {
+      isCounting && setTimeLeft((prev) => (prev >= 1 ? prev - 1 : 0));
+    }, 1000);
 
-  function startTimer() {
-    if (timer.current) {
-      clearInterval(timer.current);
-    }
-    const callback =
-      currentPlayer?.color === Colors.WHITE
-        ? decrementWhiteTimer
-        : decrementBlackTimer;
-    timer.current = setInterval(callback, 1000);
-  }
-
-  function decrementBlackTimer() {
-    setBlackTime((prev) => prev - 1);
-  }
-
-  function decrementWhiteTimer() {
-    setWhiteTime((prev) => prev - 1);
-  }
-
-  const handleRestart = () => {
-    setWhiteTime(300);
-    setBlackTime(300);
-    restart();
-  };
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isCounting]);
 
   return (
-    <div>
-      <div className="">
-        <button onClick={handleRestart}>Restart game</button>
-      </div>
-
-      <h2>Black - {blackTime}</h2>
-      <h2>White - {whiteTime}</h2>
+    <div className={className}>
+      <span>{minutes}</span>
+      <span>:</span>
+      <span>{seconds}</span>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import BoardComponent from "./components/BoardComponent";
-import LostFigures from "./components/LostFigures";
-import Timer from "./components/Timer";
+import PlayerComponent from "./components/PlayerComponent";
 import { Board } from "./models/Board";
 import { Colors } from "./models/Colors";
 import { Player } from "./models/Player";
@@ -32,18 +31,22 @@ function App() {
 
   return (
     <div className="app">
-      <Timer currentPlayer={currentPlayer} restart={restart} />
-      <h3>Current Player: {currentPlayer?.color}</h3>
+      <PlayerComponent
+        player={blackPlayer}
+        lostFigures={board.lostBlackFigures}
+        currentPlayer={currentPlayer}
+      />
       <BoardComponent
         board={board}
         setBoard={setBoard}
         currentPlayer={currentPlayer}
         swapPlayer={swapPlayer}
       />
-      <div className="lost">
-        <LostFigures title={"black"} figures={board.lostBlackFigures} />
-        <LostFigures title={"white"} figures={board.lostWhiteFigures} />
-      </div>
+      <PlayerComponent
+        player={whitePlayer}
+        lostFigures={board.lostWhiteFigures}
+        currentPlayer={currentPlayer}
+      />
     </div>
   );
 }
