@@ -21,21 +21,24 @@ code {
   width: 100vw;
   height: 100vh;
   display: flex;
-  /* flex-direction: column; */
+  background-color: #f4f7fa;
   justify-content: center;
   align-items: center;
 }
 
 .board {
-  width: calc(64px * 8);
-  height: calc(64px * 8);
+  width: calc(72px * 8);
+  height: calc(72px * 8);
   display: flex;
   flex-wrap: wrap;
+  border: 9px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 16px rgba(200, 206, 223, 0.5);
 }
 
 .cell {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,21 +51,36 @@ code {
 }
 
 .black {
-  background-color: deepskyblue;
+  background-color: #b7c0d8;
 }
 
 .white {
-  background-color: rgb(255, 212, 132);
+  background-color: #e8edf9;
 }
 .selected {
-  background-color: brown;
+  background: #8a73fcc4;
+  background: #8e77ff9a;
 }
 
 .available {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  background-color: green;
+  width: 24px;
+  height: 24px;
+  background: #7b61ff;
+  opacity: 0.5;
+  border-radius: 12px;
+}
+
+.available:hover {
+  opacity: 0.9;
+}
+
+.available:active {
+  opacity: 1;
+  scale: 1.15;
+}
+
+.target {
+  background-color: #ff61d273;
 }
 
 .lost {

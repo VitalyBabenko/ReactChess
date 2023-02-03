@@ -79,6 +79,23 @@ export class Cell {
     return true;
   }
 
+  isNeighboringCell(target: Cell): boolean {
+    if (
+      this.isEmptyVertical(target) ||
+      this.isEmptyDiagonal(target) ||
+      this.isEmptyHorizontal(target)
+    ) {
+      if (
+        this.x + 1 === target.x ||
+        this.x - 1 === target.x ||
+        this.y + 1 === target.y ||
+        this.y - 1 === target.y
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
   setFigure(figure: Figure) {
     this.figure = figure;
     this.figure.cell = this;
