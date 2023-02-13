@@ -1,0 +1,68 @@
+@import "../../scss/variables.scss";
+
+%cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $cellSize;
+  height: $cellSize;
+
+  img {
+    width: $figureSize;
+    height: $figureSize;
+  }
+}
+
+.black {
+  @extend %cell;
+  background-color: $grey;
+}
+
+.white {
+  @extend %cell;
+  background-color: $lightGrey;
+}
+
+.selected {
+  @extend %cell;
+  background-color: $primary;
+
+  &:hover {
+    background-color: $primaryDark;
+  }
+}
+
+.target {
+  @extend %cell;
+  background-color: $pink;
+
+  img {
+    transform: scale(0.9);
+  }
+
+  &:hover {
+    background-color: $pinkDark;
+    img {
+      transform: scale(1);
+    }
+  }
+}
+
+.available {
+  @extend %cell;
+  &::before {
+    content: "";
+    background-color: $primary;
+    border-radius: 50%;
+    width: $availableSize;
+    height: $availableSize;
+  }
+
+  &:hover {
+    &::before {
+      transform: scale(1.1);
+      background-color: $primaryDark;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { Colors } from "./Colors";
 import { Board } from "./Board";
-import { Figure } from "./figures/Figure";
+import { Figure, FigureNames } from "./figures/Figure";
 
 export class Cell {
   readonly x: number;
@@ -79,23 +79,6 @@ export class Cell {
     return true;
   }
 
-  isNeighboringCell(target: Cell): boolean {
-    if (
-      this.isEmptyVertical(target) ||
-      this.isEmptyDiagonal(target) ||
-      this.isEmptyHorizontal(target)
-    ) {
-      if (
-        this.x + 1 === target.x ||
-        this.x - 1 === target.x ||
-        this.y + 1 === target.y ||
-        this.y - 1 === target.y
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }
   setFigure(figure: Figure) {
     this.figure = figure;
     this.figure.cell = this;
@@ -110,9 +93,7 @@ export class Cell {
   moveFigure(target: Cell) {
     if (this.figure && this.figure.canMove(target)) {
       this.figure.moveFigure(target);
-      if (target.figure) {
-        this.addLostFigure(target.figure);
-      }
+      if (target.figure) this.addLostFigure(target.figure);
       target.setFigure(this.figure);
       this.figure = null;
     }

@@ -1,0 +1,23 @@
+@import "../../scss/variables.scss";
+
+.board {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0 20px;
+
+  width: $boardSize;
+  height: $boardSize;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc($boardSize + 16px);
+    height: calc($boardSize + 16px);
+    top: -8px;
+    left: -8px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: $box-shadow;
+  }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import BoardComponent from "./components/BoardComponent";
-import PlayerComponent from "./components/PlayerComponent";
+import BoardComponent from "./components/BoardComponent/BoardComponent";
+import PlayerComponent from "./components/PlayerComponent/PlayerComponent";
 import { Board } from "./models/Board";
 import { Colors } from "./models/Colors";
 import { Player } from "./models/Player";

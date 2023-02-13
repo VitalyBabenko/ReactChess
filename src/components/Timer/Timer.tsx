@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from "react";
+import style from "./Timer.module.scss";
 
 interface TimerProps {
-  className: string;
   isCounting: boolean;
 }
-
-const Timer: FC<TimerProps> = ({ className, isCounting }) => {
+// TODO: player lost, when time is up + loser popup
+const Timer: FC<TimerProps> = ({ isCounting }) => {
   const [timeLeft, setTimeLeft] = useState(900);
   const getPadTime = (time: number): string => time.toString().padStart(2, "0");
   const minutes = getPadTime(Math.floor(timeLeft / 60));
@@ -22,7 +22,7 @@ const Timer: FC<TimerProps> = ({ className, isCounting }) => {
   }, [isCounting]);
 
   return (
-    <div className={className}>
+    <div className={isCounting ? style.timerActive : style.timer}>
       <span>{minutes}</span>
       <span>:</span>
       <span>{seconds}</span>

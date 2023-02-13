@@ -1,0 +1,30 @@
+// @config "../../tailwind.config.js";
+
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+@import "./variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f7fa;
+  justify-content: center;
+  align-items: center;
+}

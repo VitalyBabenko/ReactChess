@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Figure } from "../models/figures/Figure";
-import { Player } from "../models/Player";
-import Timer from "./Timer";
+import { Figure } from "../../models/figures/Figure";
+import { Player } from "../../models/Player";
+import style from "./PlayerComponent.module.scss";
+import Timer from "../Timer/Timer";
 
 interface PlayerComponentProps {
   player: Player | null;
@@ -13,21 +14,16 @@ const PlayerComponent: FC<PlayerComponentProps> = (props) => {
   const { player, lostFigures, currentPlayer } = props;
 
   return (
-    <div className="player">
+    <div className={style.player}>
       <p>{player?.color + " player"}</p>
-      <div className="lost">
+
+      <div className={style.lost}>
         {lostFigures.map((figure) => (
           <div key={figure.id}>{figure.logo && <img src={figure.logo} />}</div>
         ))}
       </div>
 
-      <Timer
-        className={[
-          "timer",
-          currentPlayer?.color === player?.color ? "active" : "",
-        ].join(" ")}
-        isCounting={currentPlayer?.color === player?.color}
-      />
+      <Timer isCounting={currentPlayer?.color === player?.color} />
     </div>
   );
 };

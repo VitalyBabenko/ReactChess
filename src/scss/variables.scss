@@ -1,0 +1,32 @@
+// colors
+$primary: rgba(123, 97, 255, 0.55);
+$primaryDark: rgba(123, 97, 255, 0.8);
+$pink: hsla(295, 93%, 71%, 0.35);
+$pinkDark: hsla(295, 93%, 71%, 0.7);
+$grey: #b7c0d8;
+$lightGrey: #e8edf9;
+
+// sizes
+:root {
+  --board-size: 580px;
+  --cell-size: calc(var(--board-size) / 8);
+  --figure-size: 48px;
+  --available-size: 24px;
+  --cell-mark-size: 15px;
+}
+
+@media screen and (max-width: 690px) {
+  :root {
+    --board-size: 85vw;
+    --figure-size: 7vw;
+    --available-size: 3.5vw;
+    --cell-mark-size: 2vw;
+  }
+}
+$boardSize: var(--board-size);
+$cellSize: var(--cell-size);
+$figureSize: var(--figure-size);
+$availableSize: var(--available-size);
+$cellMarkSize: var(--cell-mark-size);
+$box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;

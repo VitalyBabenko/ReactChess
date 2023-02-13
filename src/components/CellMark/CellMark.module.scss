@@ -1,0 +1,30 @@
+@import "../../scss/variables.scss";
+
+%mark {
+  position: absolute;
+  font-size: $cellMarkSize;
+  font-weight: 700;
+}
+
+.number {
+  @extend %mark;
+  top: 4px;
+  left: 5px;
+}
+
+.letter {
+  @extend %mark;
+  bottom: -1px;
+  right: 5px;
+}
+
+@media screen and (max-width: 690px) {
+  .number {
+    top: 0.6vw;
+    left: 1vw;
+  }
+  .letter {
+    bottom: -1px;
+    right: 1vw;
+  }
+}

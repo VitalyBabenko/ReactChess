@@ -1,0 +1,24 @@
+@import "../../scss/variables.scss";
+.player {
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 8px;
+  width: calc($boardSize + 16px);
+  min-height: 50px;
+  box-shadow: $box-shadow;
+
+  p {
+    font-weight: 300;
+    font-size: 22px;
+  }
+
+  img {
+    width: 31px;
+    height: 31px;
+  }
+}
+
+.lost {
+  display: flex;
+}

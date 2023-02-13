@@ -10,12 +10,26 @@ export class King extends Figure {
     this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
     this.name = FigureNames.KING;
   }
+  // TODO: make check logic
 
   canMove(target: Cell): boolean {
     if (!super.canMove(target)) return false;
-    if (this.cell.isNeighboringCell(target)) {
-      return true;
+
+    if (
+      this.cell.isEmptyVertical(target) ||
+      this.cell.isEmptyDiagonal(target) ||
+      this.cell.isEmptyHorizontal(target)
+    ) {
+      if (
+        this.cell.x + 1 === target.x ||
+        this.cell.x - 1 === target.x ||
+        this.cell.y + 1 === target.y ||
+        this.cell.y - 1 === target.y
+      ) {
+        return true;
+      }
     }
+
     return false;
   }
 }

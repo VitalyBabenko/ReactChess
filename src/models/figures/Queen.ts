@@ -13,9 +13,6 @@ export class Queen extends Figure {
 
   canMove(target: Cell): boolean {
     if (!super.canMove(target)) return false;
-    // if (this.cell.x <= target.x - 1) {
-    //   return false;
-    // }
     if (
       this.cell.isEmptyVertical(target) ||
       this.cell.isEmptyDiagonal(target) ||
@@ -23,7 +20,6 @@ export class Queen extends Figure {
     ) {
       return true;
     }
-
     return false;
   }
 }

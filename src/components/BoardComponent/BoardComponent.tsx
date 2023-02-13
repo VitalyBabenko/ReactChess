@@ -1,8 +1,9 @@
 import { FC, Fragment, useEffect, useState } from "react";
-import { Board } from "../models/Board";
-import { Cell } from "../models/Cell";
-import { Player } from "../models/Player";
-import CellComponent from "./CellComponent";
+import { Board } from "../../models/Board";
+import { Cell } from "../../models/Cell";
+import { Player } from "../../models/Player";
+import CellComponent from "../CellComponent/CellComponent";
+import style from "./BoardComponent.module.scss";
 
 interface BoardProps {
   board: Board;
@@ -50,7 +51,7 @@ const BoardComponent: FC<BoardProps> = ({
   }, [selectedCell]);
 
   return (
-    <div className="board">
+    <div className={style.board}>
       {board.cells.map((row, i) => (
         <Fragment key={i}>
           {row.map((cell) => (
