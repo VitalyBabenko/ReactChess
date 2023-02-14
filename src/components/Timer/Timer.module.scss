@@ -7,10 +7,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-
   top: 50%;
-  right: 1.2%;
   transform: translateY(-50%);
+  right: 1.2%;
   font-size: 30px;
   background-color: #b7c0d8;
   height: 80%;
@@ -24,4 +23,10 @@
 .timerActive {
   @extend %timer;
   background-color: $primary;
+}
+
+@media screen and (max-width: 690px) {
+  %timer {
+    font-size: 5vw;
+  }
 }

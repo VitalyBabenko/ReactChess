@@ -11,6 +11,7 @@
   p {
     font-weight: 300;
     font-size: 22px;
+    margin: 3px 0;
   }
 
   img {
@@ -21,4 +22,36 @@
 
 .lost {
   display: flex;
+  width: 65vw;
+  overflow-y: scroll;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .player {
+    padding-bottom: 3px;
+
+    p {
+      font-size: 18px;
+    }
+
+    img {
+      width: 23px;
+      height: 23px;
+    }
+  }
+
+  .lost {
+    overflow-y: scroll;
+    overflow-y: hidden;
+    width: 62vw;
+  }
+
+  .lost::-webkit-scrollbar {
+    display: none;
+  }
 }

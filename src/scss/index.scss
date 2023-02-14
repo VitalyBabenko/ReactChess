@@ -1,14 +1,9 @@
-// @config "../../tailwind.config.js";
-
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
-
 @import "./variables.scss";
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
