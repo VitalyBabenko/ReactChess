@@ -16,19 +16,14 @@ export class King extends Figure {
     if (!super.canMove(target)) return false;
 
     if (
-      this.cell.isEmptyVertical(target) ||
-      this.cell.isEmptyDiagonal(target) ||
-      this.cell.isEmptyHorizontal(target)
+      Math.abs(target.x - this.cell.x) > 1 ||
+      Math.abs(target.y - this.cell.y) > 1
     ) {
-      if (
-        this.cell.x + 1 === target.x ||
-        this.cell.x - 1 === target.x ||
-        this.cell.y + 1 === target.y ||
-        this.cell.y - 1 === target.y
-      ) {
-        return true;
-      }
+      return false;
     }
+    if (this.cell.isEmptyVertical(target)) return true;
+    if (this.cell.isEmptyHorizontal(target)) return true;
+    if (this.cell.isEmptyDiagonal(target)) return true;
 
     return false;
   }

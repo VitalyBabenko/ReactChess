@@ -12,6 +12,8 @@ export class Board {
   cells: Cell[][] = [];
   lostBlackFigures: Figure[] = [];
   lostWhiteFigures: Figure[] = [];
+  whiteCheck: boolean = false;
+  blackCheck: boolean = false;
 
   public initCells() {
     for (let i = 0; i < 8; i++) {
@@ -44,6 +46,40 @@ export class Board {
     newBoard.lostBlackFigures = this.lostBlackFigures;
 
     return newBoard;
+  }
+
+  private findKings(): Cell[] | null[] {
+    let whiteKing: Cell | null = null;
+    let blackKing: Cell | null = null;
+
+    this.cells.forEach((line) =>
+      line.forEach((cell) => {
+        if (cell?.figure?.name === FigureNames.KING) {
+          cell.figure.color === Colors.WHITE
+            ? (whiteKing = cell)
+            : (blackKing = cell);
+        }
+      })
+    );
+
+    return [whiteKing, blackKing];
+  }
+
+  public isCheck() {
+    const [whiteKing, blackKing] = this.findKings();
+
+    if (whiteKing && blackKing) {
+      this.cells.forEach((line) =>
+        line.forEach((cell: Cell) => {
+          if (cell.available && cell === whiteKing) {
+            this.whiteCheck = true;
+          }
+          if (cell.available && cell === blackKing) {
+            this.blackCheck = true;
+          }
+        })
+      );
+    }
   }
 
   public getCell(x: number, y: number) {

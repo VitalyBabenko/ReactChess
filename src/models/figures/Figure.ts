@@ -30,8 +30,10 @@ export class Figure {
 
   canMove(target: Cell): boolean {
     if (target.figure?.color === this.color) return false;
-    if (target.figure?.name === FigureNames.KING) return false;
-    return true;
+    return !(
+      (this.cell.board.whiteCheck || this.cell.board.blackCheck) &&
+      !target.available
+    );
   }
 
   moveFigure(target: Cell) {}
