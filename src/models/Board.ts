@@ -1,7 +1,7 @@
 import { Cell } from "./Cell";
 import { Colors } from "./Colors";
 import { Bishop } from "./figures/Bishop";
-import { Figure, FigureNames } from "./figures/Figure";
+import { Figure } from "./figures/Figure";
 import { King } from "./figures/King";
 import { Knight } from "./figures/Knight";
 import { Pawn } from "./figures/Pawn";
@@ -46,40 +46,6 @@ export class Board {
     newBoard.lostBlackFigures = this.lostBlackFigures;
 
     return newBoard;
-  }
-
-  private findKings(): Cell[] | null[] {
-    let whiteKing: Cell | null = null;
-    let blackKing: Cell | null = null;
-
-    this.cells.forEach((line) =>
-      line.forEach((cell) => {
-        if (cell?.figure?.name === FigureNames.KING) {
-          cell.figure.color === Colors.WHITE
-            ? (whiteKing = cell)
-            : (blackKing = cell);
-        }
-      })
-    );
-
-    return [whiteKing, blackKing];
-  }
-
-  public isCheck() {
-    const [whiteKing, blackKing] = this.findKings();
-
-    if (whiteKing && blackKing) {
-      this.cells.forEach((line) =>
-        line.forEach((cell: Cell) => {
-          if (cell.available && cell === whiteKing) {
-            this.whiteCheck = true;
-          }
-          if (cell.available && cell === blackKing) {
-            this.blackCheck = true;
-          }
-        })
-      );
-    }
   }
 
   public getCell(x: number, y: number) {

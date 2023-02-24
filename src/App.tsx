@@ -13,6 +13,7 @@ function App() {
 
   useEffect(() => {
     restart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function restart() {

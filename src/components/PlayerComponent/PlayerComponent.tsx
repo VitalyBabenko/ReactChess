@@ -19,7 +19,9 @@ const PlayerComponent: FC<PlayerComponentProps> = (props) => {
 
       <div className={style.lost}>
         {lostFigures.map((figure) => (
-          <div key={figure.id}>{figure.logo && <img src={figure.logo} />}</div>
+          <div key={figure.id}>
+            {figure.logo && <img src={figure.logo} alt={figure.name} />}
+          </div>
         ))}
       </div>
 

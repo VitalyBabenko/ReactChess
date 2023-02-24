@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { Cell } from "../../models/Cell";
 import CellMarkComponent from "../CellMark/CellMark";
 import style from "./CellComponent.module.scss";
