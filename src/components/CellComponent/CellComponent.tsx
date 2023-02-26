@@ -1,7 +1,8 @@
-import { FC } from "react";
+import style from "./CellComponent.module.scss";
+
 import { Cell } from "../../models/Cell";
 import CellMarkComponent from "../CellMark/CellMark";
-import style from "./CellComponent.module.scss";
+import { FC } from "react";
 
 interface CellProps {
   cell: Cell;
